@@ -55,7 +55,7 @@ GROUP BY MONTH(fecha_venta)
 ORDER BY mes ASC;
 
 -- ==========================================================================
--- CONCLUSIONES Y HALLAZGOS DE NEGOCIO (AGREGAR AL FINAL DE TU ARCHIVO)
+-- CONCLUSIONES Y HALLAZGOS DE NEGOCIO
 -- ==========================================================================
 -- 1. Concentración de Ingresos: El id_producto 1 (Laptop Pro 15) es el que más dinero genera en la tienda, liderando el ranking de facturación total.
 -- 2. Clientes Recurrentes: Los clientes con id_cliente 1, 2, 3, 4 y 5 muestran recurrencia realizando más de un pedido, lo que demuestra una alta tasa de recompra en este set de datos.
