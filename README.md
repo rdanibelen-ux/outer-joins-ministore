@@ -23,3 +23,5 @@ Esto te permite ver en una sola pantalla:
 1. Los gastos que coinciden perfectamente en ambos lados.
 2. Los gastos que vos anotaste pero que el banco aún no cobró (el lado del banco sale en `NULL`).
 3. Las comisiones que el banco te cobró de sorpresa pero que vos todavía no habías anotado (tu lado interno sale en `NULL`).
+
+Aunque este comando no sirve para cualquier gestor de SQL, ya que en motores como **MySQL** da un error de sintaxis al no estar soportado nativamente, en esos casos se soluciona simulándolo mediante la unión vertical de un `LEFT JOIN` y un `RIGHT JOIN` utilizando la cláusula **`UNION`**.
