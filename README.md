@@ -41,4 +41,22 @@ Esto te permite ver en una sola pantalla:
 Aunque este comando no sirve para cualquier gestor de SQL, ya que en motores como **MySQL** da un error de sintaxis al no estar soportado nativamente, en esos casos se soluciona simulándolo mediante la unión vertical de un `LEFT JOIN` y un `RIGHT JOIN` utilizando la cláusula **`UNION`**.
 
 
+---
+
+# UNION y UNION ALL: Consolidando inventario de múltiples sucursales — RetailChain
+
+### 1. ¿Cuántas filas devuelve cada consulta y por qué son distintas?
+* **Consulta 1 (UNION):** Devuelve menos filas (10 filas) porque elimina los registros duplicados. Los productos que estaban repetidos en ambas sucursales con los mismos datos (como el Monitor 4K o el Teclado) se unieron en una sola fila.
+* **Consulta 2 (UNION ALL):** Devuelve más filas (11 filas) porque no filtra nada; simplemente junta y muestra absolutamente todos los registros físicos de stock de ambas sucursales, manteniendo los duplicados.
+
+### 2. ¿Por qué UNION ALL es más eficiente que UNION?
+**UNION ALL** es mucho más veloz y eficiente porque agarra las tablas y las pega una abajo de la otra directamente. En cambio, **UNION** obliga al motor de la base de datos a realizar un paso extra: ordenar toda la información y comparar fila por fila para encontrar y borrar los duplicados, lo que consume mucha más memoria y recursos del sistema.
+
+### 3. ¿En qué casos de negocio usarías cada uno?
+* **Usaría UNION para:** Crear un catálogo unificado de clientes únicos de la empresa combinando los datos de la sucursal física y la tienda online, evitando que un cliente que compra en ambos lados aparezca repetido.
+* **Usaría UNION ALL para:** Un reporte financiero de auditoría para contar el total de facturas emitidas en todo el año juntando los registros de cada mes, donde necesito ver absolutamente todo y no quiero que se borre nada.
+
+### 4. ¿Qué pasa si las columnas de ambas consultas no coinciden en número o tipo?
+Si las consultas no coinciden en la cantidad de columnas o en sus tipos de datos en el mismo orden, **SQL arroja un error de sintaxis** y la consulta no se ejecuta. Para que las uniones verticales funcionen, la estructura de los `SELECT` debe ser un espejo exacto de ambos lados.
+
 
