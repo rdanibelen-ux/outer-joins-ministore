@@ -6,24 +6,22 @@
 
 -- Consulta 1 - Vista base del proyecto (INNER JOIN)
 
-USE Ventas_Tech_DB
+USE Ventas_Tech_DB;
 GO
 
 SELECT   v.fecha_venta, 
          c.nombre,
          c.ciudad,
          p.nombre_producto,
-         cat.nombre_categoria ,
-         v.cantidad *
-         v. precio_unitario AS
-         total_venta
+         cat.nombre_categoria,
+         v.cantidad * v.precio_unitario AS total_venta
 FROM ventas v
 INNER JOIN clientes c 
-ON c.id_cliente = v.id_cliente
+    ON c.id_cliente = v.id_cliente
 INNER JOIN productos p 
-ON p.id_producto = v.id_producto
+    ON p.id_producto = v.id_producto
 INNER JOIN categorias cat 
-ON p.id_categoria = cat.id_categoria;
+    ON p.id_categoria = cat.id_categoria;
 
 -- Consulta 2 - Clientes sin ventas (LEFT JOIN)
 
