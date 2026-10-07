@@ -11,6 +11,7 @@ GO
 
 SELECT   v.fecha_venta, 
          c.nombre,
+         c.ciudad,
          p.nombre_producto,
          cat.nombre_categoria ,
          v.cantidad *
